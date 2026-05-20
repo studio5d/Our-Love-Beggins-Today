@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You ❤️</title>
+
+  <!-- Favicon and social preview -->
+  <link rel="icon" href="love.jpg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="love.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Thank You ❤️">
+  <meta property="og:description" content="No matter what your decision is, I cherish every moment and respect your choice.">
+  <meta property="og:image" content="love.jpg">
+  <meta property="og:image:alt" content="Romantic love illustration">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Thank You ❤️">
+  <meta name="twitter:description" content="No matter what your decision is, I cherish every moment and respect your choice.">
+  <meta name="twitter:image" content="love.jpg">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      padding:24px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      background:linear-gradient(135deg, rgba(255,79,129,0.9), rgba(255,133,162,0.85), rgba(255,192,203,0.9)), url('love.jpg') center/cover no-repeat;
+      background-attachment: fixed;
+      color:white;
+      position:relative;
+      overflow-x:hidden;
+      overflow-y:auto;
+    }
+
+    .container{
+      width:min(100%,750px);
+      max-width:750px;
+      margin:24px auto;
+      padding:32px;
+      border-radius:30px;
+      background:rgba(255,255,255,0.16);
+      backdrop-filter:blur(18px);
+      text-align:center;
+      box-shadow:0 14px 45px rgba(0,0,0,0.22);
+      z-index:2;
+      animation:fadeIn 1.5s ease;
+    }
+
+    h1{
+      font-size:3rem;
+      margin-bottom:20px;
+    }
+
+    .message{
+      font-size:1.12rem;
+      line-height:1.9;
+      margin-top:20px;
+      text-align:left;
+    }
+
+    .answer{
+      margin-top:20px;
+      font-size:1.45rem;
+      font-weight:700;
+      letter-spacing:0.01em;
+    }
+
+    .heart{
+      position:absolute;
+      top:-10px;
+      color:white;
+      animation:fall linear forwards;
+      pointer-events:none;
+    }
+
+    @keyframes fall{
+      to{
+        transform:translateY(110vh);
+        opacity:0;
+      }
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .footer{
+      margin-top:30px;
+      font-size:1rem;
+      opacity:0.9;
+    }
+
+    @media(max-width:780px){
+      body{
+        padding:16px;
+      }
+
+      .container{
+        width:100%;
+        padding:26px;
+      }
+
+      h1{
+        font-size:2.4rem;
+      }
+
+      .message{
+        font-size:1rem;
+        line-height:1.8;
+      }
+    }
+
+    @media(max-width:460px){
+      .container{
+        padding:22px;
+      }
+
+      h1{
+        font-size:2rem;
+      }
+
+      .message{
+        font-size:0.98rem;
+        line-height:1.75;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Thank You ❤️</h1>
+
+    <div class="answer" id="answer"></div>
+
+    <p class="message">
+      No matter what your decision is, I just want you to know that meeting you has genuinely been one of the most beautiful parts of my life.
+      <br><br>
+      From random conversations on Instagram to spending real moments together here in Nigeria, every second with you has felt peaceful, natural, and special in a way I cannot fully explain.
+      <br><br>
+      I admire your mind, your heart, your creativity, your presence, and the energy you carry everywhere you go.
+      <br><br>
+      This page was never meant to pressure you.
+      It was simply my honest way of expressing how much I truly like you.
+      <br><br>
+      And even if your answer is not the one my heart hopes for, I want you to know something important…
+      your decision will never change the respect, admiration, and kindness I have for you.
+      <br><br>
+      Life is far bigger than one question, and connections like ours are rare.
+      So whether this becomes a love story or remains a beautiful friendship, I’ll still be grateful that our paths crossed.
+      <br><br>
+      Thank you for being you. ❤️
+    </p>
+
+    <div class="footer">
+      Forever smiling because I met you 💕
+    </div>
+
+  </div>
+
+  <script>
+    const answer = localStorage.getItem('loveAnswer') || 'No answer stored yet.';
+    const normalizedAnswer = answer.toLowerCase();
+    let responseText = '';
+
+    if (normalizedAnswer === 'yes') {
+      document.getElementById('answer').textContent = 'Your Answer: Yes';
+      const responseNode = document.createElement('p');
+      responseNode.className = 'message';
+      responseNode.textContent = 'Your answer fills me with hope, and I’m thankful that we can keep building something beautiful together while staying true to everything we share now.';
+      document.querySelector('.container').insertBefore(responseNode, document.querySelector('.message'));
+    } else if (normalizedAnswer === 'no') {
+      document.getElementById('answer').textContent = 'Your Answer: No';
+      const responseNode = document.createElement('p');
+      responseNode.className = 'message';
+      responseNode.textContent = 'I understand, and I want you to know that your decision will never change the respect and care I have for you. Our friendship is something I value deeply.';
+      document.querySelector('.container').insertBefore(responseNode, document.querySelector('.message'));
+    } else {
+      document.getElementById('answer').style.display = 'none';
+    }
+
+    function createHeart(){
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '💖';
+
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.fontSize = (15 + Math.random() * 30) + 'px';
+      heart.style.animationDuration = (3 + Math.random() * 5) + 's';
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 8000);
+    }
+
+    setInterval(createHeart, 250);
+  </script>
+
+</body>
+</html>
